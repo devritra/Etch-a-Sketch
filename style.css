@@ -41,6 +41,8 @@ body{
     height: 960px;
     width: 960px;
     background-color: white;
+    display: flex;
+    flex-wrap: wrap;
 }
 #grid_size_btn{
     align-self: flex-end;
