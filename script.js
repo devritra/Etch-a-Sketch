@@ -1,4 +1,5 @@
 function gridHandler(){
+    let isMouseDown = false;
     
     function defaultGrid(){
         let squareLength = 960/16;
@@ -26,6 +27,13 @@ function gridHandler(){
             let square = document.createElement("div");
             square.style.width = squareLength + "px";
             square.style.height = squareLength + "px";
+            square.addEventListener("mousedown",(e)=>isMouseDown=true);
+            square.addEventListener("mouseup",(e)=>isMouseDown=false);
+            square.addEventListener("mouseover",(e)=>{
+                if(isMouseDown){
+                    e.target.style.backgroundColor = "red";
+                }
+            })
             square.style.backgroundColor = "white";
             square.setAttribute("class", "square");
             container.appendChild(square);
@@ -45,5 +53,24 @@ function gridHandler(){
         e.target.textContent = gridSize + "x" + gridSize;
         return generateGrid(gridSize);
     })
+ 
+    let previousSquares = document.querySelectorAll(".square");
+    previousSquares = Array.from(previousSquares);
+    previousSquares.map((item)=>{
+        item.addEventListener("mousedown",(e)=>isMouseDown = true);
+    });
+    previousSquares.map((item)=>{
+        item.addEventListener("mouseup",(e)=>isMouseDown = false);
+    });
+    previousSquares.map((item)=>{
+        item.addEventListener("mouseover",(e)=>{
+            if(isMouseDown){
+                e.target.style.backgroundColor = "red";
+            }
+        })
+        item.addEventListener("click",(e)=>{
+            e.target.style.backgroundColor = "red";
+        })
+    });
 }
 gridHandler();
