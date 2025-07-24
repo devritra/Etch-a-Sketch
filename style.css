@@ -44,8 +44,11 @@ body{
     display: flex;
     flex-wrap: wrap;
 }
-#grid_size_btn{
+#grid_size_btn,
+#color_clear_btn{
     align-self: flex-end;
     width: 80px;
     height: 24px;
+    margin-top: 10px;
+    border-radius: 5px;
 }

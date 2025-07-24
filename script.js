@@ -1,5 +1,6 @@
 function gridHandler(){
     let isMouseDown = false;
+    let clearBtn = document.querySelector("#color_clear_btn");
     
     function defaultGrid(){
         let squareLength = 960/16;
@@ -25,6 +26,7 @@ function gridHandler(){
         previousSquares.map((item)=>item.remove());
         for(let i = 1; i <= totalSquareNo; i++){
             let square = document.createElement("div");
+            square.setAttribute("class","square");
             square.style.width = squareLength + "px";
             square.style.height = squareLength + "px";
             square.addEventListener("mousedown",(e)=>isMouseDown=true);
@@ -38,6 +40,13 @@ function gridHandler(){
             square.setAttribute("class", "square");
             container.appendChild(square);
         }
+        let justSquares = document.querySelectorAll(".square");
+        justSquares = Array.from(justSquares);
+        clearBtn.addEventListener("click",(e)=>{
+            justSquares.map((item)=>{
+                item.style.backgroundColor = "white";
+            });
+        })
         return;    
     }
 
@@ -72,5 +81,12 @@ function gridHandler(){
             e.target.style.backgroundColor = "red";
         })
     });
+    let justSquares = document.querySelectorAll(".square");
+    justSquares = Array.from(justSquares);
+    clearBtn.addEventListener("click",(e)=>{
+        justSquares.map((item)=>{
+            item.style.backgroundColor = "white";
+        });
+    })
 }
 gridHandler();
